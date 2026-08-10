@@ -5,6 +5,7 @@ import { TalkToFieldButton } from "@/components/app/TalkToFieldButton";
 import { primaryNav, secondaryNav, mobileNav, type NavItem } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { SignOutButton } from "@/components/auth/SignOutButton";
 
 function useActivePath() {
   return useRouterState({ select: (s) => s.location.pathname });
@@ -56,9 +57,12 @@ export function AppShell({ children }: { children: ReactNode }) {
               <SideLink key={item.to} item={item} active={pathname === item.to} />
             ))}
           </nav>
-          <Button asChild variant="outline" size="lg" className="rounded-2xl">
-            <Link to="/">Back to website</Link>
-          </Button>
+          <div className="flex flex-col gap-2">
+            <Button asChild variant="outline" size="lg" className="rounded-2xl">
+              <Link to="/">Back to website</Link>
+            </Button>
+            <SignOutButton className="w-full rounded-2xl" />
+          </div>
         </aside>
 
         <main className="min-w-0 flex-1 px-4 pb-28 pt-6 md:px-8 md:pb-16">
