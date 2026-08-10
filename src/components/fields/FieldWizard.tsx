@@ -116,10 +116,10 @@ export function FieldWizard({
   onSubmit,
   onCancel,
 }: {
-  initial?: Field;
+  initial?: Field | undefined;
   submitLabel: string;
   onSubmit: (input: FieldInput) => Promise<void>;
-  onCancel?: () => void;
+  onCancel?: (() => void) | undefined;
 }) {
   const [values, setValues] = useState<FormValues>(initial ? fromField(initial) : empty);
   const [step, setStep] = useState(0);
