@@ -10,33 +10,177 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteImport } from './routes/_app'
+import { Route as AppChatRouteImport } from './routes/_app.chat'
+import { Route as AppDashboardRouteImport } from './routes/_app.dashboard'
+import { Route as AppDiagnosisRouteImport } from './routes/_app.diagnosis'
+import { Route as AppFieldsRouteImport } from './routes/_app.fields'
+import { Route as AppHistoryRouteImport } from './routes/_app.history'
+import { Route as AppIntelligenceRouteImport } from './routes/_app.intelligence'
+import { Route as AppProfileRouteImport } from './routes/_app.profile'
+import { Route as AppRemindersRouteImport } from './routes/_app.reminders'
+import { Route as AppRiskRouteImport } from './routes/_app.risk'
+import { Route as AppWeatherRouteImport } from './routes/_app.weather'
+import { Route as AppWhatIfRouteImport } from './routes/_app.what-if'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppRoute = AppRouteImport.update({
+  id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppChatRoute = AppChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDashboardRoute = AppDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDiagnosisRoute = AppDiagnosisRouteImport.update({
+  id: '/diagnosis',
+  path: '/diagnosis',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFieldsRoute = AppFieldsRouteImport.update({
+  id: '/fields',
+  path: '/fields',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHistoryRoute = AppHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppIntelligenceRoute = AppIntelligenceRouteImport.update({
+  id: '/intelligence',
+  path: '/intelligence',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProfileRoute = AppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRemindersRoute = AppRemindersRouteImport.update({
+  id: '/reminders',
+  path: '/reminders',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRiskRoute = AppRiskRouteImport.update({
+  id: '/risk',
+  path: '/risk',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppWeatherRoute = AppWeatherRouteImport.update({
+  id: '/weather',
+  path: '/weather',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppWhatIfRoute = AppWhatIfRouteImport.update({
+  id: '/what-if',
+  path: '/what-if',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/chat': typeof AppChatRoute
+  '/dashboard': typeof AppDashboardRoute
+  '/diagnosis': typeof AppDiagnosisRoute
+  '/fields': typeof AppFieldsRoute
+  '/history': typeof AppHistoryRoute
+  '/intelligence': typeof AppIntelligenceRoute
+  '/profile': typeof AppProfileRoute
+  '/reminders': typeof AppRemindersRoute
+  '/risk': typeof AppRiskRoute
+  '/weather': typeof AppWeatherRoute
+  '/what-if': typeof AppWhatIfRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/chat': typeof AppChatRoute
+  '/dashboard': typeof AppDashboardRoute
+  '/diagnosis': typeof AppDiagnosisRoute
+  '/fields': typeof AppFieldsRoute
+  '/history': typeof AppHistoryRoute
+  '/intelligence': typeof AppIntelligenceRoute
+  '/profile': typeof AppProfileRoute
+  '/reminders': typeof AppRemindersRoute
+  '/risk': typeof AppRiskRoute
+  '/weather': typeof AppWeatherRoute
+  '/what-if': typeof AppWhatIfRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_app': typeof AppRouteWithChildren
+  '/_app/chat': typeof AppChatRoute
+  '/_app/dashboard': typeof AppDashboardRoute
+  '/_app/diagnosis': typeof AppDiagnosisRoute
+  '/_app/fields': typeof AppFieldsRoute
+  '/_app/history': typeof AppHistoryRoute
+  '/_app/intelligence': typeof AppIntelligenceRoute
+  '/_app/profile': typeof AppProfileRoute
+  '/_app/reminders': typeof AppRemindersRoute
+  '/_app/risk': typeof AppRiskRoute
+  '/_app/weather': typeof AppWeatherRoute
+  '/_app/what-if': typeof AppWhatIfRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/chat'
+    | '/dashboard'
+    | '/diagnosis'
+    | '/fields'
+    | '/history'
+    | '/intelligence'
+    | '/profile'
+    | '/reminders'
+    | '/risk'
+    | '/weather'
+    | '/what-if'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/chat'
+    | '/dashboard'
+    | '/diagnosis'
+    | '/fields'
+    | '/history'
+    | '/intelligence'
+    | '/profile'
+    | '/reminders'
+    | '/risk'
+    | '/weather'
+    | '/what-if'
+  id:
+    | '__root__'
+    | '/'
+    | '/_app'
+    | '/_app/chat'
+    | '/_app/dashboard'
+    | '/_app/diagnosis'
+    | '/_app/fields'
+    | '/_app/history'
+    | '/_app/intelligence'
+    | '/_app/profile'
+    | '/_app/reminders'
+    | '/_app/risk'
+    | '/_app/weather'
+    | '/_app/what-if'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +192,127 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/chat': {
+      id: '/_app/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof AppChatRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/dashboard': {
+      id: '/_app/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AppDashboardRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/diagnosis': {
+      id: '/_app/diagnosis'
+      path: '/diagnosis'
+      fullPath: '/diagnosis'
+      preLoaderRoute: typeof AppDiagnosisRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/fields': {
+      id: '/_app/fields'
+      path: '/fields'
+      fullPath: '/fields'
+      preLoaderRoute: typeof AppFieldsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/history': {
+      id: '/_app/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof AppHistoryRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/intelligence': {
+      id: '/_app/intelligence'
+      path: '/intelligence'
+      fullPath: '/intelligence'
+      preLoaderRoute: typeof AppIntelligenceRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/profile': {
+      id: '/_app/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AppProfileRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/reminders': {
+      id: '/_app/reminders'
+      path: '/reminders'
+      fullPath: '/reminders'
+      preLoaderRoute: typeof AppRemindersRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/risk': {
+      id: '/_app/risk'
+      path: '/risk'
+      fullPath: '/risk'
+      preLoaderRoute: typeof AppRiskRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/weather': {
+      id: '/_app/weather'
+      path: '/weather'
+      fullPath: '/weather'
+      preLoaderRoute: typeof AppWeatherRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/what-if': {
+      id: '/_app/what-if'
+      path: '/what-if'
+      fullPath: '/what-if'
+      preLoaderRoute: typeof AppWhatIfRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppChatRoute: typeof AppChatRoute
+  AppDashboardRoute: typeof AppDashboardRoute
+  AppDiagnosisRoute: typeof AppDiagnosisRoute
+  AppFieldsRoute: typeof AppFieldsRoute
+  AppHistoryRoute: typeof AppHistoryRoute
+  AppIntelligenceRoute: typeof AppIntelligenceRoute
+  AppProfileRoute: typeof AppProfileRoute
+  AppRemindersRoute: typeof AppRemindersRoute
+  AppRiskRoute: typeof AppRiskRoute
+  AppWeatherRoute: typeof AppWeatherRoute
+  AppWhatIfRoute: typeof AppWhatIfRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppChatRoute: AppChatRoute,
+  AppDashboardRoute: AppDashboardRoute,
+  AppDiagnosisRoute: AppDiagnosisRoute,
+  AppFieldsRoute: AppFieldsRoute,
+  AppHistoryRoute: AppHistoryRoute,
+  AppIntelligenceRoute: AppIntelligenceRoute,
+  AppProfileRoute: AppProfileRoute,
+  AppRemindersRoute: AppRemindersRoute,
+  AppRiskRoute: AppRiskRoute,
+  AppWeatherRoute: AppWeatherRoute,
+  AppWhatIfRoute: AppWhatIfRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
