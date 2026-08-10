@@ -27,6 +27,7 @@ import { Route as AppRemindersRouteImport } from './routes/_app.reminders'
 import { Route as AppRiskRouteImport } from './routes/_app.risk'
 import { Route as AppWeatherRouteImport } from './routes/_app.weather'
 import { Route as AppWhatIfRouteImport } from './routes/_app.what-if'
+import { Route as AppFieldFieldIdRouteImport } from './routes/_app.field.$fieldId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -117,6 +118,11 @@ const AppWhatIfRoute = AppWhatIfRouteImport.update({
   path: '/what-if',
   getParentRoute: () => AppRoute,
 } as any)
+const AppFieldFieldIdRoute = AppFieldFieldIdRouteImport.update({
+  id: '/field/$fieldId',
+  path: '/field/$fieldId',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -136,6 +142,7 @@ export interface FileRoutesByFullPath {
   '/risk': typeof AppRiskRoute
   '/weather': typeof AppWeatherRoute
   '/what-if': typeof AppWhatIfRoute
+  '/field/$fieldId': typeof AppFieldFieldIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -155,6 +162,7 @@ export interface FileRoutesByTo {
   '/risk': typeof AppRiskRoute
   '/weather': typeof AppWeatherRoute
   '/what-if': typeof AppWhatIfRoute
+  '/field/$fieldId': typeof AppFieldFieldIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -176,6 +184,7 @@ export interface FileRoutesById {
   '/_app/risk': typeof AppRiskRoute
   '/_app/weather': typeof AppWeatherRoute
   '/_app/what-if': typeof AppWhatIfRoute
+  '/_app/field/$fieldId': typeof AppFieldFieldIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -197,6 +206,7 @@ export interface FileRouteTypes {
     | '/risk'
     | '/weather'
     | '/what-if'
+    | '/field/$fieldId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -216,6 +226,7 @@ export interface FileRouteTypes {
     | '/risk'
     | '/weather'
     | '/what-if'
+    | '/field/$fieldId'
   id:
     | '__root__'
     | '/'
@@ -236,6 +247,7 @@ export interface FileRouteTypes {
     | '/_app/risk'
     | '/_app/weather'
     | '/_app/what-if'
+    | '/_app/field/$fieldId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -376,6 +388,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppWhatIfRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/field/$fieldId': {
+      id: '/_app/field/$fieldId'
+      path: '/field/$fieldId'
+      fullPath: '/field/$fieldId'
+      preLoaderRoute: typeof AppFieldFieldIdRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
@@ -391,6 +410,7 @@ interface AppRouteChildren {
   AppRiskRoute: typeof AppRiskRoute
   AppWeatherRoute: typeof AppWeatherRoute
   AppWhatIfRoute: typeof AppWhatIfRoute
+  AppFieldFieldIdRoute: typeof AppFieldFieldIdRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
@@ -405,6 +425,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppRiskRoute: AppRiskRoute,
   AppWeatherRoute: AppWeatherRoute,
   AppWhatIfRoute: AppWhatIfRoute,
+  AppFieldFieldIdRoute: AppFieldFieldIdRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
