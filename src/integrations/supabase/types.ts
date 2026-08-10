@@ -14,12 +14,103 @@ export type Database = {
   }
   public: {
     Tables: {
+      field_events: {
+        Row: {
+          action_window: Json | null
+          actions_taken: Json | null
+          confidence: number | null
+          created_at: string
+          diagnosis: string | null
+          event_type: string
+          field_id: string
+          follow_up: Json | null
+          id: string
+          image_url: string | null
+          metadata: Json | null
+          occurred_at: string
+          recommendations: Json | null
+          recovery_status: string | null
+          risks: Json | null
+          severity: string | null
+          summary: string | null
+          title: string | null
+          updated_at: string
+          user_id: string
+          weather: Json | null
+        }
+        Insert: {
+          action_window?: Json | null
+          actions_taken?: Json | null
+          confidence?: number | null
+          created_at?: string
+          diagnosis?: string | null
+          event_type: string
+          field_id: string
+          follow_up?: Json | null
+          id?: string
+          image_url?: string | null
+          metadata?: Json | null
+          occurred_at?: string
+          recommendations?: Json | null
+          recovery_status?: string | null
+          risks?: Json | null
+          severity?: string | null
+          summary?: string | null
+          title?: string | null
+          updated_at?: string
+          user_id: string
+          weather?: Json | null
+        }
+        Update: {
+          action_window?: Json | null
+          actions_taken?: Json | null
+          confidence?: number | null
+          created_at?: string
+          diagnosis?: string | null
+          event_type?: string
+          field_id?: string
+          follow_up?: Json | null
+          id?: string
+          image_url?: string | null
+          metadata?: Json | null
+          occurred_at?: string
+          recommendations?: Json | null
+          recovery_status?: string | null
+          risks?: Json | null
+          severity?: string | null
+          summary?: string | null
+          title?: string | null
+          updated_at?: string
+          user_id?: string
+          weather?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "field_events_field_id_fkey"
+            columns: ["field_id"]
+            isOneToOne: false
+            referencedRelation: "fields"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       fields: {
         Row: {
           created_at: string
           crop: string | null
+          crop_variety: string | null
+          growth_stage: string | null
+          health_status: string | null
           id: string
+          is_active: boolean
+          known_problem: string | null
+          latitude: number | null
+          location_text: string | null
+          longitude: number | null
           name: string
+          notes: string | null
+          size: number | null
+          size_unit: string
           sowing_date: string | null
           updated_at: string
           user_id: string
@@ -28,8 +119,19 @@ export type Database = {
         Insert: {
           created_at?: string
           crop?: string | null
+          crop_variety?: string | null
+          growth_stage?: string | null
+          health_status?: string | null
           id?: string
+          is_active?: boolean
+          known_problem?: string | null
+          latitude?: number | null
+          location_text?: string | null
+          longitude?: number | null
           name: string
+          notes?: string | null
+          size?: number | null
+          size_unit?: string
           sowing_date?: string | null
           updated_at?: string
           user_id: string
@@ -38,8 +140,19 @@ export type Database = {
         Update: {
           created_at?: string
           crop?: string | null
+          crop_variety?: string | null
+          growth_stage?: string | null
+          health_status?: string | null
           id?: string
+          is_active?: boolean
+          known_problem?: string | null
+          latitude?: number | null
+          location_text?: string | null
+          longitude?: number | null
           name?: string
+          notes?: string | null
+          size?: number | null
+          size_unit?: string
           sowing_date?: string | null
           updated_at?: string
           user_id?: string
