@@ -92,9 +92,9 @@ function OnboardingPage() {
                   className="h-12 rounded-2xl text-base"
                   value={values.name}
                   onChange={(e) => setValues((v) => ({ ...v, name: e.target.value }))}
-                  aria-invalid={!!errors.name}
+                  aria-invalid={!!errors["name"]}
                 />
-                {errors.name ? <p className="text-sm text-destructive">{errors.name}</p> : null}
+                {errors["name"] ? <p className="text-sm text-destructive">{errors["name"]}</p> : null}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="village" className="text-base">Village</Label>

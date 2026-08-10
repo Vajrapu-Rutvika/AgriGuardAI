@@ -72,9 +72,9 @@ function ResetPasswordPage() {
             className="h-12 rounded-2xl text-base"
             value={values.password}
             onChange={(e) => setValues((v) => ({ ...v, password: e.target.value }))}
-            aria-invalid={!!errors.password}
+            aria-invalid={!!errors["password"]}
           />
-          {errors.password ? <p className="text-sm text-destructive">{errors.password}</p> : null}
+          {errors["password"] ? <p className="text-sm text-destructive">{errors["password"]}</p> : null}
         </div>
         <div className="space-y-2">
           <Label htmlFor="confirmPassword" className="text-base">Type it again</Label>
@@ -85,9 +85,9 @@ function ResetPasswordPage() {
             className="h-12 rounded-2xl text-base"
             value={values.confirmPassword}
             onChange={(e) => setValues((v) => ({ ...v, confirmPassword: e.target.value }))}
-            aria-invalid={!!errors.confirmPassword}
+            aria-invalid={!!errors["confirmPassword"]}
           />
-          {errors.confirmPassword ? <p className="text-sm text-destructive">{errors.confirmPassword}</p> : null}
+          {errors["confirmPassword"] ? <p className="text-sm text-destructive">{errors["confirmPassword"]}</p> : null}
         </div>
         <Button type="submit" size="lg" className="min-h-13 w-full rounded-2xl text-base" disabled={busy}>
           {busy ? "Saving..." : "Save new password"}

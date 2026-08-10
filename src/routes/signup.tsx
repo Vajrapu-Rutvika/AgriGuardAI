@@ -106,9 +106,9 @@ function SignupPage() {
             className="h-12 rounded-2xl text-base"
             value={values.fullName}
             onChange={(e) => setValues((v) => ({ ...v, fullName: e.target.value }))}
-            aria-invalid={!!errors.fullName}
+            aria-invalid={!!errors["fullName"]}
           />
-          {errors.fullName ? <p className="text-sm text-destructive">{errors.fullName}</p> : null}
+          {errors["fullName"] ? <p className="text-sm text-destructive">{errors["fullName"]}</p> : null}
         </div>
         <div className="space-y-2">
           <Label htmlFor="email" className="text-base">Email</Label>
@@ -119,9 +119,9 @@ function SignupPage() {
             className="h-12 rounded-2xl text-base"
             value={values.email}
             onChange={(e) => setValues((v) => ({ ...v, email: e.target.value }))}
-            aria-invalid={!!errors.email}
+            aria-invalid={!!errors["email"]}
           />
-          {errors.email ? <p className="text-sm text-destructive">{errors.email}</p> : null}
+          {errors["email"] ? <p className="text-sm text-destructive">{errors["email"]}</p> : null}
         </div>
         <div className="space-y-2">
           <Label htmlFor="password" className="text-base">Password</Label>
@@ -132,9 +132,9 @@ function SignupPage() {
             className="h-12 rounded-2xl text-base"
             value={values.password}
             onChange={(e) => setValues((v) => ({ ...v, password: e.target.value }))}
-            aria-invalid={!!errors.password}
+            aria-invalid={!!errors["password"]}
           />
-          {errors.password ? <p className="text-sm text-destructive">{errors.password}</p> : null}
+          {errors["password"] ? <p className="text-sm text-destructive">{errors["password"]}</p> : null}
         </div>
         <div className="space-y-2">
           <Label htmlFor="confirmPassword" className="text-base">Type your password again</Label>
@@ -145,9 +145,9 @@ function SignupPage() {
             className="h-12 rounded-2xl text-base"
             value={values.confirmPassword}
             onChange={(e) => setValues((v) => ({ ...v, confirmPassword: e.target.value }))}
-            aria-invalid={!!errors.confirmPassword}
+            aria-invalid={!!errors["confirmPassword"]}
           />
-          {errors.confirmPassword ? <p className="text-sm text-destructive">{errors.confirmPassword}</p> : null}
+          {errors["confirmPassword"] ? <p className="text-sm text-destructive">{errors["confirmPassword"]}</p> : null}
         </div>
         <fieldset className="space-y-2">
           <legend className="text-base font-medium">Preferred language</legend>

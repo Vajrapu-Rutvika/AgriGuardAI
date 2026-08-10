@@ -82,9 +82,9 @@ function LoginPage() {
             className="h-12 rounded-2xl text-base"
             value={values.email}
             onChange={(e) => setValues((v) => ({ ...v, email: e.target.value }))}
-            aria-invalid={!!errors.email}
+            aria-invalid={!!errors["email"]}
           />
-          {errors.email ? <p className="text-sm text-destructive">{errors.email}</p> : null}
+          {errors["email"] ? <p className="text-sm text-destructive">{errors["email"]}</p> : null}
         </div>
         <div className="space-y-2">
           <Label htmlFor="password" className="text-base">Password</Label>
@@ -95,9 +95,9 @@ function LoginPage() {
             className="h-12 rounded-2xl text-base"
             value={values.password}
             onChange={(e) => setValues((v) => ({ ...v, password: e.target.value }))}
-            aria-invalid={!!errors.password}
+            aria-invalid={!!errors["password"]}
           />
-          {errors.password ? <p className="text-sm text-destructive">{errors.password}</p> : null}
+          {errors["password"] ? <p className="text-sm text-destructive">{errors["password"]}</p> : null}
         </div>
         <Button type="submit" size="lg" className="min-h-13 w-full rounded-2xl text-base" disabled={busy}>
           {busy ? "🌱 Logging you in..." : "Log in"}
