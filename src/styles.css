@@ -75,8 +75,8 @@
   --color-warning-foreground: var(--warning-foreground);
   --color-danger: var(--danger);
   --color-danger-foreground: var(--danger-foreground);
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
+  --font-display: var(--typeface-display);
+  --font-body: var(--typeface-body);
 }
 
 :root {
@@ -148,8 +148,8 @@
   --gradient-sunrise: linear-gradient(120deg, oklch(0.9 0.09 88) 0%, oklch(0.95 0.04 110) 60%, oklch(0.97 0.02 150) 100%);
   --shadow-soft: 0 2px 6px -2px oklch(0.42 0.104 149 / 0.12), 0 10px 26px -14px oklch(0.42 0.104 149 / 0.28);
   --shadow-lift: 0 18px 44px -22px oklch(0.42 0.104 149 / 0.45);
-  --font-display: "Baloo 2", "Noto Sans Telugu", system-ui, sans-serif;
-  --font-body: "Mukta", "Noto Sans Telugu", system-ui, sans-serif;
+  --typeface-display: "Baloo 2", "Noto Sans Telugu", system-ui, sans-serif;
+  --typeface-body: "Mukta", "Noto Sans Telugu", system-ui, sans-serif;
 }
 
 .dark {
@@ -190,7 +190,7 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: var(--font-body);
+    font-family: var(--typeface-body);
     font-size: 1.0625rem;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
@@ -200,7 +200,7 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-display);
+    font-family: var(--typeface-display);
     letter-spacing: -0.01em;
   }
 }
