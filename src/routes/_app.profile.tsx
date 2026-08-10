@@ -68,7 +68,7 @@ function ProfilePage() {
     if (!userId) return;
     const parsed = nameSchema.safeParse(form.full_name);
     if (!parsed.success) {
-      setNameError(parsed.error.issues[0].message);
+      setNameError(parsed.error.issues[0]?.message ?? "Invalid name");
       return;
     }
     setNameError("");
