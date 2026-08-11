@@ -1,0 +1,4 @@
+create policy "Farmers can read their crop photos" on storage.objects for select to authenticated using (bucket_id = 'crop-photos' and (storage.foldername(name))[1] = auth.uid()::text);
+create policy "Farmers can upload their crop photos" on storage.objects for insert to authenticated with check (bucket_id = 'crop-photos' and (storage.foldername(name))[1] = auth.uid()::text);
+create policy "Farmers can update their crop photos" on storage.objects for update to authenticated using (bucket_id = 'crop-photos' and (storage.foldername(name))[1] = auth.uid()::text);
+create policy "Farmers can delete their crop photos" on storage.objects for delete to authenticated using (bucket_id = 'crop-photos' and (storage.foldername(name))[1] = auth.uid()::text);
