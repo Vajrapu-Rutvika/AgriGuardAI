@@ -129,3 +129,63 @@ export async function listFieldEvents(fieldId: string): Promise<FieldEvent[]> {
   if (error) throw error;
   return (data ?? []) as FieldEvent[];
 }
+
+export type DiagnosisEvent = FieldEvent & {
+  image_url: string | null;
+  diagnosis: string | null;
+  confidence: number | null;
+  metadata: Record<string, unknown> | null;
+};
+
+export async function listDiagnosisEvents(userId: string, fieldId?: string): Promise<DiagnosisEvent[]> {
+  let query = supabase
+    .from("field_events")
+    .select(
+      "id, field_id, event_type, occurred_at, title, summary, severity, recovery_status, image_url, diagnosis, confidence, metadata",
+    )
+    .eq("user_id", userId)
+    .eq("event_type", "diagnosis")
+    .order("occurred_at", { ascending: false })
+    .limit(50);
+  if (fieldId) query = query.eq("field_id", fieldId);
+  const { data, error } = await query;
+  if (error) throw error;
+  return (data ?? []) as DiagnosisEvent[];
+}
+
+export async function saveDiagnosisEvent(input: {
+  userId: string;
+  fieldId: string;
+  imagePath: string | null;
+  crop: string;
+  issue: string;
+  confidence: number;
+  severity: string;
+  symptoms: string[];
+  alternatives: { name: string; confidence: number }[];
+  recommendations: string[];
+  uncertaintyNote: string;
+  expertReview: boolean;
+}) {
+  const { error } = await supabase.from("field_events").insert({
+    user_id: input.userId,
+    field_id: input.fieldId,
+    event_type: "diagnosis",
+    title: `${input.crop} — ${input.issue}`,
+    summary: input.uncertaintyNote || input.symptoms.slice(0, 2).join(" "),
+    image_url: input.imagePath,
+    diagnosis: input.issue,
+    confidence: input.confidence,
+    severity: input.severity,
+    recommendations: input.recommendations,
+    risks: input.alternatives,
+    metadata: {
+      crop: input.crop,
+      symptoms: input.symptoms,
+      alternatives: input.alternatives,
+      expert_review_recommended: input.expertReview,
+      uncertainty_note: input.uncertaintyNote,
+    },
+  });
+  if (error) throw error;
+}
